@@ -23,6 +23,8 @@ public class TestZookeeper4 implements Watcher {
         latch.await();
 
         // 异步创建节点
+        // rc：服务器响应码 0：OK -4：客户端与服务端断开连接 -110：指定节点已经存在 -112：会话已过期
+        // name: 实际服务端的完整节点路径
         zooKeeper.create("/zk-test-ephemeral-", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL, (rc, path, ctx, name) -> {
             System.out.println("1::::::::::Create path result:[rc:" + rc + ",path:" + path + ",ctx:" + ctx + ", real path name:" + name);
         }, "abcd");
@@ -36,6 +38,8 @@ public class TestZookeeper4 implements Watcher {
 
         }, "abcd");
 
+        // 删除节点
+        zooKeeper.delete("/zk-test-ephemeral-", -1);
         Thread.sleep(Integer.MAX_VALUE);
     }
 }
