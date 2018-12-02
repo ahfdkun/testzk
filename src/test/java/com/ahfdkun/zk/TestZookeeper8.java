@@ -21,7 +21,7 @@ public class TestZookeeper8 implements Watcher {
 
     @Override
     public void process(WatchedEvent event) {
-//        System.out.println("######Receive watched event: " + event);
+        System.out.println("######Receive watched event: " + event);
         if (Event.KeeperState.SyncConnected == event.getState()) {
             if (Event.EventType.None == event.getType() && event.getPath() == null) {
                 latch.countDown();
