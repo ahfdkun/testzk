@@ -19,7 +19,7 @@ public class TestZookeeper3 implements Watcher {
 
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.9:2181", 100, new TestZookeeper3());
+        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper3());
         latch.await();
 
         // 同步创建节点

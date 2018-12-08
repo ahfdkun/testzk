@@ -21,7 +21,7 @@ public class TestZookeeper implements Watcher {
 
 
     public static void main(String[] args) throws IOException {
-        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.9:2181", 100, new TestZookeeper());
+        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper());
         System.out.println(zooKeeper.getState());
         try {
             latch.await();

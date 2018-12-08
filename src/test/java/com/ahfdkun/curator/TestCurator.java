@@ -8,7 +8,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 public class TestCurator {
     public static void main(String[] args) throws InterruptedException {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
-        CuratorFramework client = CuratorFrameworkFactory.newClient("192.168.1.9:2181", 5000, 3000, retryPolicy);
+        CuratorFramework client = CuratorFrameworkFactory.newClient("192.168.1.7:2181", 5000, 3000, retryPolicy);
         client.start();
 
         Thread.sleep(2000);

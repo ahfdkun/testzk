@@ -11,7 +11,7 @@ public class TestCurator7 {
     static String path = "/zk-book";
 
     static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("192.168.1.9:2181")
+            .connectString("192.168.1.7:2181")
             .sessionTimeoutMs(15000)
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
             .build();

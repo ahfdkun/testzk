@@ -9,7 +9,7 @@ public class TestCurator2 {
     public static void main(String[] args) throws InterruptedException {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         CuratorFramework client = CuratorFrameworkFactory.builder()
-                .connectString("192.168.1.9:2181")
+                .connectString("192.168.1.7:2181")
                 .sessionTimeoutMs(5000)
                 .connectionTimeoutMs(3000)
                 .retryPolicy(retryPolicy)

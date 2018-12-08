@@ -23,7 +23,7 @@ public class TestZookeeper9 implements Watcher {
 
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        zk = new ZooKeeper("192.168.1.9:2181", 100, new TestZookeeper9());
+        zk = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper9());
         latch.await();
 
         String path = "/zk-book";

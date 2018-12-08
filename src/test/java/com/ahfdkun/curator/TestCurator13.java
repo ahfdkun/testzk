@@ -18,7 +18,7 @@ public class TestCurator13 {
             new Thread(() -> {
                 try {
                     CuratorFramework client = CuratorFrameworkFactory.builder()
-                            .connectString("192.168.1.9:2181")
+                            .connectString("192.168.1.7:2181")
                             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
                             .build();
                     client.getConnectionStateListenable().addListener((client1, state) -> System.out.println(state));

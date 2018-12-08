@@ -10,7 +10,7 @@ import java.util.List;
 public class TestZkClient3 {
 
     public static void main(String[] args) throws InterruptedException {
-        ZkClient zkClient = new ZkClient("192.168.1.9:2181", 5000);
+        ZkClient zkClient = new ZkClient("192.168.1.7:2181", 5000);
         String path = "/zk-book";
 
 

@@ -22,17 +22,17 @@ public class TestZookeeper2 implements Watcher {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.9:2181", 100, new TestZookeeper2());
+        ZooKeeper zooKeeper = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper2());
         latch.await();
         long sessionId = zooKeeper.getSessionId();
         byte[] sessionPasswd = zooKeeper.getSessionPasswd();
         System.out.println("---------sessionPasswd: " + Arrays.toString(sessionPasswd));
 
         // Use illegal sessionId and sessionPasswd
-        zooKeeper = new ZooKeeper("192.168.1.9:2181", 100, new TestZookeeper2(), 1l, "test".getBytes());
+        zooKeeper = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper2(), 1l, "test".getBytes());
 
         // Use correct sessionId and sessionPasswd
-        zooKeeper = new ZooKeeper("192.168.1.9:2181", 100, new TestZookeeper2(), sessionId, sessionPasswd);
+        zooKeeper = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper2(), sessionId, sessionPasswd);
         Thread.sleep(Integer.MAX_VALUE);
 
     }

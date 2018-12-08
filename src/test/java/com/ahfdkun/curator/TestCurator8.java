@@ -12,7 +12,7 @@ public class TestCurator8 {
     static String master_path = "/curator_recipes_master_path";
 
     static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("192.168.1.9:2181")
+            .connectString("192.168.1.7:2181")
             .sessionTimeoutMs(15000)
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
             .build();
