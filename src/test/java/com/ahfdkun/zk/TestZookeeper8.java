@@ -36,15 +36,22 @@ public class TestZookeeper8 implements Watcher {
 
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        zk = new ZooKeeper("192.168.1.7:2181", 100, new TestZookeeper8());
+        zk = new ZooKeeper("192.168.1.7:2181", 10000, new TestZookeeper8());
         latch.await();
 
         String path = "/zk-book";
-        zk.delete(path, -1);
+        if (zk.exists(path, true) != null) {
+            zk.delete(path, -1);
+        }
+
 
         zk.create(path, "123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 
-        zk.getData(path, event -> System.out.println("getData添加的Watcher回调"), null);
+        zk.getData(path, event -> System.out.println("自定义watcher回调。。。。"), null);
+
+        zk.getData(path, true, (rc, path12, ctx, data, stat) -> {
+            System.out.println("getData添加的Watcher回调");
+        }, null);
 
         zk.setData(path, "123".getBytes(), -1, (rc, path1, ctx, stat) -> System.out.println(rc + ", " + path1 + ", " + ctx + ", " + stat), "上下文信息");
 
